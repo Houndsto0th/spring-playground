@@ -20,4 +20,9 @@ public class QueryEndpointsController {
     public String getParamsAsHash(@RequestParam Map queryString) {
         return queryString.toString();
     }
+
+    @GetMapping("/asobject")
+    public String getParamsAsObject(BreakfastQuery breakfastQuery) {
+        return String.format("Breakfast today will be %s juice with a side of %s", breakfastQuery.getJuice(), breakfastQuery.getMeat());
+    }
 }

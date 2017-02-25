@@ -40,4 +40,16 @@ public class QueryEndpointsControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("{coffee=" + coffeeType + ", bacon=" + baconType + "}"));
     }
+
+    @Test
+    public void testAsCustomObject() throws Exception {
+        String juice = "Orange";
+        String meat = "Hashed Beef";
+
+        RequestBuilder request = MockMvcRequestBuilders.get("/queries/asobject?juice=" + juice + "&" + "meat=" + meat);
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("Breakfast today will be " + juice + " juice with a side of " + meat));
+    }
 }
